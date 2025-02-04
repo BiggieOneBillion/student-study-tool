@@ -70,7 +70,7 @@ export default function Signin() {
 
       const res = await axios.post("api/sign-in/api-verify");
       if (res.status === 200) {
-        alert('good')
+        toast.success('Signing in successful!')
         handleBtnText("Success");
         handleIsLoadingFalse();
         // also save the api in the local storage so the user can use it will on the app

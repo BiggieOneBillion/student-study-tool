@@ -11,6 +11,7 @@ import {
   Dispatch,
   SetStateAction,
 } from "react";
+import {toast} from "sonner"
 
 type response = {
   id: number;
@@ -115,7 +116,7 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
       const FormatedResponse = JSON.parse(newResponse2);
       setResponseGenarated(FormatedResponse);
     } else {
-      alert("Something Went Wrong, Network Error");
+      toast.error("Something Went Wrong, Network Error");
     }
 
     // setGeneratedResult(FormatedResponse); // update zustand store.
@@ -137,7 +138,7 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     // console.log(responseOutput);
 
     if (!responseOutput) {
-      alert("Network Issue, No response");
+      toast.error("Network Issue, No response");
     } else {
       const newResponse = responseOutput.replaceAll(/`/g, "");
       const newResponse2 = newResponse.replaceAll("json", "");
@@ -206,7 +207,7 @@ Please deliver the final result in a well-structured Markdown format`;
         const callMoreResearchOutput = await run(newResearch);
         // const newResponse = sanitizeResponse(callMoreResearchOutput);
         if (!callMoreResearchOutput) {
-          alert("Explanation not avaliable, Try again");
+          toast.error("Explanation not avaliable, Try again");
         } else {
           setNewResearchResponse(callMoreResearchOutput);
           setIsLoadingExplaination(false);
@@ -258,7 +259,7 @@ Please deliver the final result in a well-structured Markdown format`;
 
       setQuestion(FormatedResponse);
     } else {
-      alert("Quiz data error, try again later");
+      toast.error("Quiz data error, try again later");
     }
 
     // console.log(typeof FormatedResponse);

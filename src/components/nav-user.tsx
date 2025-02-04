@@ -18,6 +18,7 @@ import { useAuthStore } from "@/store/user-store";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useKeyStore } from "@/store/api-store";
+import {toast} from "sonner"
 
 export function NavUser() {
   const { isMobile } = useSidebar();
@@ -35,7 +36,7 @@ export function NavUser() {
       //  Route to the home route
       router.push("/");
     } catch (error) {
-      alert("Error found");
+      toast.error("Process Failed");
     }
   };
 
